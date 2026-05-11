@@ -1,0 +1,119 @@
+# EXP_NAME: MemSeg
+# SEED: 42
+
+# DATASET:
+#   datadir: /cluster/home/zqyeleven/destseg_perlin/datasets/mvtec
+#   texture_source_dir: /cluster/home/zqyeleven/destseg_perlin/datasets/dtd/images
+#   anomaly_mask_info: ./anomaly_mask.json
+#   target: null
+#   resize: 
+#     - 256
+#     - 256
+#   imagesize: 256
+#   structure_grid_size: 8
+#   transparency_range:
+#     - 0.15 # under bound
+#     - 1. # upper bound
+#   perlin_scale: 6
+#   min_perlin_scale: 0
+#   perlin_noise_threshold: 0.5
+#   percent: 0.5
+
+# DATALOADER:
+#   batch_size: 8
+#   num_workers: 0
+
+# MEMORYBANK:
+#   nb_memory_sample: 30
+
+# MODEL:
+#   feature_extractor_name: resnet18
+
+# TRAIN:
+#   batch_size: 8
+#   num_training_steps: 5000
+#   l1_weight: 0.6
+#   focal_weight: 0.4
+#   focal_alpha: null
+#   focal_gamma: 4
+#   use_wandb: False
+
+# OPTIMIZER:
+#   lr: 0.003
+#   weight_decay: 0.0005
+
+# SCHEDULER:
+#   min_lr: 0.0001
+#   warmup_ratio: 0.1
+#   use_scheduler: True
+
+# LOG:
+#   log_interval: 1
+#   eval_interval: 100
+
+# RESULT:
+#   savedir: ./Saved_model_MemSeg/MemSeg_0.25
+
+# DATASETNAME: MemSeg
+EXP_NAME: MemSeg_test
+SEED: 42
+
+DATASET:
+  datadir:  /cluster/home/zqyeleven/ASBenchmark/BTAD
+  # datadir:  /cluster/home/zqyeleven/ASBenchmark/VisA_MVTec
+  texture_source_dir: /cluster/home/zqyeleven/destseg_perlin/datasets/dtd/images
+  anomaly_mask_info: ./anomaly_mask.json
+  target: null
+  resize: 
+    - 256
+    - 256
+  imagesize: 256
+  structure_grid_size: 8
+  transparency_range:
+    - 0.15 # under bound
+    - 1. # upper bound
+  perlin_scale: 6
+  min_perlin_scale: 0
+  perlin_noise_threshold: 0.5
+  percent: 0.5
+  aug_dir: /cluster/home/zqyeleven/ASBenchmark/destseg_perlin/generated_dataset/AD_data/bottle_sort
+  origin_dir: /cluster/home/zqyeleven/ASBenchmark/destseg_perlin/generated_dataset/AD_data/bottle_origin_sort
+  mask_dir: /cluster/home/zqyeleven/ASBenchmark/destseg_perlin/generated_dataset/AD_data/bottle_mask_sort
+  anomalymap_path: /cluster/home/zqyeleven/ASBenchmark/MemSeg/datasets/Multi/DRAEM+AD_MVTec
+
+DATALOADER:
+  batch_size: 8
+  num_workers: 0
+
+MEMORYBANK:
+  nb_memory_sample: 30
+
+MODEL:
+  feature_extractor_name: resnet18
+
+TRAIN:
+  batch_size: 8
+  num_training_steps: 5000
+  l1_weight: 0.6
+  focal_weight: 0.4
+  focal_alpha: null
+  focal_gamma: 4
+  use_wandb: False
+
+OPTIMIZER:
+  lr: 0.003
+  weight_decay: 0.0005
+
+SCHEDULER:
+  min_lr: 0.0001
+  warmup_ratio: 0.1
+  use_scheduler: True
+
+LOG:
+  log_interval: 1
+  eval_interval: 100
+
+RESULT:
+  savedir: ./Saved_model/test
+
+DATASETNAME: MemSeg
